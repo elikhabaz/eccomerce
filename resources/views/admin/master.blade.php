@@ -2,9 +2,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title>Corona Admin</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="{{asset('admin/assets/vendors/mdi/css/materialdesignicons.min.css')}}">
@@ -33,7 +36,11 @@
         <!-- partial:partials/_navbar.html -->
        @include('admin.layouts.header')
         <!-- partial -->
-        @include('admin.body')
+        <div class="main-panel">
+         @yield('content')
+
+         @extends('admin.layouts.footer')
+        </div>
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

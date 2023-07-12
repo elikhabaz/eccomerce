@@ -11,12 +11,12 @@ class HomeController extends Controller
     public function index(){
         return view('hompage.master');
     }
-    
+
     public function redirect(){
 
         $userType=Auth::user()->userType;
             if($userType==1){
-                return view('admin.home');
+                return view('admin.index');
              }else{
                  return view('hompage.master');
         }

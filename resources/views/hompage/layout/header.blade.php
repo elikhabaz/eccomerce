@@ -59,13 +59,12 @@
                 </form>
 
                  @if (Route::has('login'))
-                 <div class="flex">
+                 <div style="display: flex;">
                      @auth
                      <nav x-data="{ open: false }" class="bg-white">
                         <!-- Primary Navigation Menu -->
                         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="">
-
                                 <!-- Settings Dropdown -->
                                 <div class="hidden sm:flex sm:items-center sm:ml-6">
                                     <x-dropdown align="right" width="48">
@@ -158,7 +157,7 @@
                          @endif
                      @endauth
                  </div>
-             @endif
+                @endif
 
              </ul>
           </div>
