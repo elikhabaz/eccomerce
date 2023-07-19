@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function allcategories(){
-        return view('admin.category.allcategories');
+        return view('admin.category.all-categories');
     }
 }

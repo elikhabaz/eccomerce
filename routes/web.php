@@ -30,8 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
     Route::get('all-categorise',[CategoryController::class , 'allcategories'])->name('all-categories');
+    Route::get('create-category', [CategoryController::class , 'createcategory'])->name('create-category');
 });
 
 require __DIR__.'/auth.php';
