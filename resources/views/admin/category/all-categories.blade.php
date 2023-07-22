@@ -1,10 +1,18 @@
 
 @component('admin.layouts.content')
 
+
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
-      <div class="card-body">
+        <div class="card-header">
+            @if (session('status'))
+            <div class="alert alert-dark" role="alert">
+                Category Saved!
+            </div>
+            @endif
 
+        </div>
+      <div class="card-body">
         <div class="d-flex justify-content-between">
             <h4 class="card-title">Category table</h4>
             <a class=" btn btn-sm btn-success mb-2 mt-2"  href="{{ route('create-category') }}">+ Create New Category</a>
@@ -15,21 +23,23 @@
               <tr>
                 <th> #id </th>
                 <th> category name </th>
+
                 <th> action </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td> 1 </td>
-                <td> Herman Beck </td>
+                @foreach ($categories as $category )
+                <tr>
+                    <td> {{$category->id}} </td>
+                    <td> {{$category->name}} </td>
 
-                <td>
-                <a href="#" class="btn btn-sm btn-info">Edit</a>
-                <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                    <td>
+                    <a href="{{ route('edit-category' , $category->id) }}" class="btn btn-sm btn-info">Edit</a>
+                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
 
-                </td>
-              </tr>
-
+                    </td>
+                  </tr>
+                @endforeach
             </tbody>
           </table>
         </div>

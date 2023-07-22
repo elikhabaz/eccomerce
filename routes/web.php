@@ -33,6 +33,12 @@ Route::middleware('auth')->group(function () {
 
     Route::get('all-categorise',[CategoryController::class , 'allcategories'])->name('all-categories');
     Route::get('create-category', [CategoryController::class , 'createcategory'])->name('create-category');
+    Route::post('store-category', [CategoryController::class , 'storecategory'])->name('store-category');
+    Route::get('edit-category/{id}', [CategoryController::class , 'editcategory'])->name('edit-category');
+    Route::put('update-category/{id}', [CategoryController::class , 'updatecategory'])->name('update-category');
+
+
+
 });
 
 require __DIR__.'/auth.php';
