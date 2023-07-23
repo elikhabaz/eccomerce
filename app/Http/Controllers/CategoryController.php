@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     public function allcategories(){
-        $categories=Category::all();
+        $categories = Category::all();
         return view('admin.category.all-categories' , compact('categories'));
     }
 
@@ -19,12 +19,10 @@ class CategoryController extends Controller
     }
 
     public function storecategory(Request $request){
-
         $category = new Category();
         $category->name = $request->name;
         $category->save();
         return redirect('all-categories')->with('statuse','category saved!');
-
     }
 
     public function editcategory($id){
@@ -36,6 +34,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->update();
-        return redirect('all-categories')->with('status' , 'UPdate');
+        return view('admin.category.all-categories');
+        // redirect('all-categories')->with('status' , 'UPdate');
     }
 }
