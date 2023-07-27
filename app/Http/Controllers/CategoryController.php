@@ -20,9 +20,9 @@ class CategoryController extends Controller
 
     public function storecategory(Request $request){
         $category = new Category();
-        $category->name = $request->name;
+        $category-> name = $request->name;
         $category->save();
-        return redirect('all-categories')->with('statuse','category saved!');
+        return redirect('all-categorise')->with('statuse','category saved!');
     }
 
     public function editcategory($id){
@@ -34,7 +34,7 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->update();
-        return view('admin.category.all-categories');
-        // redirect('all-categories')->with('status' , 'UPdate');
+        return redirect('all-categorise')->with('status' , 'UPdate');
+
     }
 }
