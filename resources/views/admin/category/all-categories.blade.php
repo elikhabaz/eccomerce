@@ -34,7 +34,7 @@
                     <td> {{$category->name}} </td>
                     <td>
                     <a href="{{ route('edit-category' , $category->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    <a href="#" class="btn btn-sm btn-danger">Delete</a>
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                     </td>
                   </tr>
                 @endforeach
@@ -46,3 +46,15 @@
   </div>
 
 @endcomponent
+
+{{-- @component('admin.master')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $('deletebtn').click(function(e){
+            e.preventDefault();
+            alert('hello eli');
+        });
+    });
+  </script>
+@endcomponent --}}

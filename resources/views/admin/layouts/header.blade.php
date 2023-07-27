@@ -1,6 +1,6 @@
 <nav class="navbar p-0 fixed-top d-flex flex-row">
     <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="{{asset('admin/assets/images/logo-mini.svg')}}" alt="logo" /></a>
+      <a class="navbar-brand brand-logo-mini" href="index.html"><img src="admin/assets/images/logo-mini.svg" alt="logo" /></a>
     </div>
     <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
@@ -80,7 +80,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
               <div class="preview-thumbnail">
-                <img src="admin/assets/images/faces/face2.jpg" alt="image" class="rounded-circle profile-pic">
+                <img src="admin/assets/images/faces/face1.jpg" alt="image" class="rounded-circle profile-pic">
               </div>
               <div class="preview-item-content">
                 <p class="preview-subject ellipsis mb-1">Cregh send you a message</p>
@@ -151,13 +151,13 @@
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
             <div class="navbar-profile">
-              <img class="img-xs rounded-circle" src="assets/images/faces/face15.jpg" alt="">
+              <img class="img-xs rounded-circle" src="admin/assets/images/faces/face15.jpg" alt="">
               <p class="mb-0 d-none d-sm-block navbar-profile-name">Henry Klein</p>
               <i class="mdi mdi-menu-down d-none d-sm-block"></i>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-            
+
             <h6 class="p-3 mb-0">Profile</h6>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item preview-item">
