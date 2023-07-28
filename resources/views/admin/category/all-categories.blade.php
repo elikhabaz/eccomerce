@@ -9,6 +9,19 @@
             <div class="alert alert-dark" role="alert">
                 Category Saved!
             </div>
+
+            @endif
+
+            @if (session('upd'))
+            <div class="alert alert-dark" role="alert">
+                Category Update!
+            </div>
+        @endif
+
+            @if (session('del'))
+                <div class="alert alert-dark" role="alert">
+                    Category deleted!
+                </div>
             @endif
 
         </div>
@@ -34,7 +47,17 @@
                     <td> {{$category->name}} </td>
                     <td>
                     <a href="{{ route('edit-category' , $category->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    <form method="POST" action="{{ route('delete-category', $category->id) }}">
+                        @csrf
+                        @method('delete')
+
+                        <button class="btn btn-sm btn-danger" type='submit' class="text-inverse" data-toggle="tooltip" onclick="return confirm(' you want to delete?');">
+                         Delete
+                        </button>
+
+                        </form>
+
+                        {{-- <a class="btn btn-sm btn-danger" href="{{ route('delete-category', $category->id) }}" onclick="return confirm(' you want to delete?');">Delete</a> --}}
                     </td>
                   </tr>
                 @endforeach

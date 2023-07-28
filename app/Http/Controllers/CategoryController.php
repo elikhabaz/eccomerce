@@ -22,7 +22,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category-> name = $request->name;
         $category->save();
-        return redirect('all-categorise')->with('statuse','category saved!');
+        return redirect('all-categorise')->with('status','category saved!');
     }
 
     public function editcategory($id){
@@ -34,7 +34,13 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->name = $request->name;
         $category->update();
-        return redirect('all-categorise')->with('status' , 'UPdate');
+        return redirect('all-categorise')->with('upd' , 'UPdate');
 
+    }
+
+    public function distroy($id){
+        $category = Category::findOrFail($id);
+        $category->delete();
+        return redirect()->route('all-categories')->with('del' , 'deleted');
     }
 }
