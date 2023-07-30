@@ -14,6 +14,17 @@ class UserController extends Controller
     }
 
     public function createuser(){
-        dd('vgkighkjh');
+        return view('admin.user.create-user');
+    }
+
+    public function storeuser(Request $request){
+        $user = new User;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->save();
+        return redirect('all-user')->with('status','user saved!');
+
     }
 }

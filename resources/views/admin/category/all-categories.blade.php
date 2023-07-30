@@ -47,7 +47,7 @@
                     <td> {{$category->name}} </td>
                     <td>
                     <a href="{{ route('edit-category' , $category->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    <form method="POST" action="{{ route('delete-category', $category->id) }}">
+                    <form method="POST" action="{{ route('delete-category', $category->id) }}" class="stylebtn">
                         @csrf
                         @method('delete')
 

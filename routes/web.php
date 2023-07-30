@@ -42,6 +42,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('all-users' , [UserController::class , 'allusers'])->name('all-users');
     Route::get('create-user' ,[UserController::class , 'createuser'])->name('create-user');
+    Route::post('store-user', [UserController::class , 'storeuser'])->name('store-user');
+
 
 
 });

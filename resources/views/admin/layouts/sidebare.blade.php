@@ -97,6 +97,18 @@
           <span class="menu-title">Category</span>
         </a>
       </li>
+
+
+      <li class="nav-item menu-items">
+        <a class="nav-link" href="{{ route('all-users') }}">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-group"></i>
+          </span>
+          <span class="menu-title">Users</span>
+        </a>
+      </li>
+
+
       <li class="nav-item menu-items">
         <a class="nav-link" href="pages/charts/chartjs.html">
           <span class="menu-icon">

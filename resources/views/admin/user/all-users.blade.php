@@ -7,20 +7,20 @@
         <div class="card-header">
             @if (session('status'))
             <div class="alert alert-dark" role="alert">
-                Category Saved!
+                User Saved!
             </div>
 
             @endif
 
             @if (session('upd'))
             <div class="alert alert-dark" role="alert">
-                Category Update!
+                User Update!
             </div>
         @endif
 
             @if (session('del'))
                 <div class="alert alert-dark" role="alert">
-                    Category deleted!
+                    User deleted!
                 </div>
             @endif
 
@@ -51,10 +51,16 @@
                     <td> {{$user->email}} </td>
                     <td> {{$user->phone}} </td>
                     <td> {{$user->address}} </td>
-
+                    <td>
+                        @if($user->email_verified_at)
+                            Active
+                        @else
+                             Deactive
+                        @endif
+                    </td>
                     <td>
                     <a href="#" class="btn btn-sm btn-info">Edit</a>
-                    {{-- <form method="POST" action="{{ route('delete-category', $category->id) }}">
+                    {{-- <form method="POST" action="{{ route('delete-user', $users->id) }}">
                         @csrf
                         @method('delete')
 
