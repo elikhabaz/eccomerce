@@ -17,7 +17,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/redirect';
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
@@ -36,7 +36,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web/home.php'));
 
-            Route::middleware('web' , 'auth')
+            Route::middleware('web','auth','auth.admin')
+            ->prefix('admin')
                 ->group(base_path('routes/web/admin.php'));
 
  /*I want change my route so I create a folder in the route and I add to file in that I have to edit routeprovider so I add this lines*/
