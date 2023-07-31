@@ -34,7 +34,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->group(base_path('routes/api.php'));
 
             Route::middleware('web')
-                ->group(base_path('routes/web.php'));
+                ->group(base_path('routes/web/home.php'));
+
+            Route::middleware('web' , 'auth')
+                ->group(base_path('routes/web/admin.php'));
+
+ /*I want change my route so I create a folder in the route and I add to file in that I have to edit routeprovider so I add this lines*/
         });
     }
 
