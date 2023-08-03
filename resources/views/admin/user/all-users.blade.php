@@ -53,9 +53,9 @@
                     <td> {{$user->address}} </td>
                     <td>
                         @if($user->email_verified_at)
-                            Active
+                            <span class="badge badge-success">Active</span>
                         @else
-                             Deactive
+                        <span class="badge badge-danger">InActive</span>
                         @endif
                     </td>
                     <td>

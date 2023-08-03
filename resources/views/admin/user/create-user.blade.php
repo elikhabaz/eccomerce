@@ -2,6 +2,8 @@
 <div class="col-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
+        @include('admin.layouts.errors')
+
         <h4 class="card-title">Create User </h4>
         <form  class="form-inline" method="POST" name="name" action="{{ route('store-user') }}">
             @csrf
@@ -23,16 +25,19 @@
           <input type="text" class="text-black form-control mb-2 mr-sm-2 bg-white" id="address"
            placeholder="User address" name="address">
 
-        <label  for="verfiy">user verification</label>
-        <br>
-          <input type="checkbox" class="form-check-input" id="verfiy"
-           name="verfiy">
-
-        {{-- <label class="sr-only" for="password">password</label>
+           <label  for="password">password</label>
           <input type="password" class="text-black form-control mb-2 mr-sm-2 bg-white" id="password"
-           placeholder="User pasword" name="password"> --}}
+           placeholder="User pasword" name="password">
 
-        </div>
+           <label  for="password_confrmation">password confrmation</label>
+           <input type="password" class="text-black form-control mb-2 mr-sm-2 bg-white" id="password_confrmation"
+            placeholder="User pasword_confrmation" name="password_confrmation">
+
+        <label  for="verify">user verification</label>
+        <br>
+          <input type="checkbox" class="form-check-input" id="verify"
+           name="verify">
+
           <button type="submit" class="btn btn-primary mb-2">Submit</button>
         </form>
       </div>
