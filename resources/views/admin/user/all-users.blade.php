@@ -59,7 +59,7 @@
                         @endif
                     </td>
                     <td>
-                    <a href="#" class="btn btn-sm btn-info">Edit</a>
+                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-sm btn-info">Edit</a>
                     {{-- <form method="POST" action="{{ route('delete-user', $users->id) }}">
                         @csrf
                         @method('delete')
