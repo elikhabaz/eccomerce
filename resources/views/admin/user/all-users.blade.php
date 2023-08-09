@@ -1,6 +1,57 @@
-
 @component('admin.layouts.content')
+@section('scripts')
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script>
+     $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
+
+        $('.deletebtn').click(function(e){
+        e.preventDefault();
+        var delete_id = $(this).closest("tr").find('.delete_val_id').val();
+
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this imaginary file!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+            })
+
+
+            .then((willDelete) => {
+            if (willDelete) {
+
+            var data = {
+                "_token":$('input[name=_token]').val(),
+                "id":delete_id
+            };
+
+            $ajax({
+                type: "DELETE",
+                url: '/admin/user-delete/'+delete_id,
+                data: data,
+                success:function(response){
+                swal(response.status , {
+                    icon: "success",
+                })
+                .then((result)=>{
+                    location.reload();
+                });
+                }
+            });
+        }
+            });
+        });
+    });
+
+</script>
+@endsection
 
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
@@ -46,6 +97,7 @@
             <tbody>
                 @foreach ( $users as $user )
                 <tr>
+                  <input type="hidden" class="delete_val_id" value="{{$user->id}}">
                     <td> {{$user->id}} </td>
                     <td> {{$user->name}} </td>
                     <td> {{$user->email}} </td>
@@ -59,17 +111,21 @@
                         @endif
                     </td>
                     <td>
-                    <a href="{{ route('edit-user', $user->id) }}" class="btn btn-sm btn-info">Edit</a>
-                    {{-- <form method="POST" action="{{ route('delete-user', $users->id) }}">
+                   <div class="inline-flex">
+
+                    <a href="{{ route('edit-user', $user->id) }}" class=" btn btn-sm btn-info " style="margin-right: 10px;">Edit</a>
+
+
+                    <button type="submit" class="btn btn-sm btn-danger deletebtn">Delete</button>
+                    {{-- <form method="POST" action="{{ route('delete-user', $user->id) }}">
                         @csrf
                         @method('delete')
-
-                        <button class="btn btn-sm btn-danger" type='submit' class="text-inverse" data-toggle="tooltip" onclick="return confirm(' you want to delete?');">
+                        <button class="btn btn-sm btn-danger" type='submit' class="text-inverse " data-toggle="tooltip" onclick="return confirm(' you want to delete?');">
                          Delete
                         </button>
 
                         </form> --}}
-
+                    </div>
                         {{-- <a class="btn btn-sm btn-danger" href="{{ route('delete-category', $category->id) }}" onclick="return confirm(' you want to delete?');">Delete</a> --}}
                     </td>
                   </tr>
@@ -80,5 +136,4 @@
       </div>
     </div>
   </div>
-
 @endcomponent

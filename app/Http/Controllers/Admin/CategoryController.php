@@ -24,7 +24,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category-> name = $request->name;
         $category->save();
-        return redirect('all-categorise')->with('status','category saved!');
+        return redirect(route('all-categories'))->with('status','category saved!');
     }
 
     public function editcategory($id){

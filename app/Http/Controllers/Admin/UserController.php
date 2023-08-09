@@ -73,4 +73,16 @@ class UserController extends Controller
         }
         return redirect(route('all-users'))->with('upd' , 'User Upadte!');
     }
+
+    // public function distroy($id){
+    //     $user = User::findOrFail($id);
+    //     $user->delete();
+    //     return redirect()->route('all-users')->with('del' , 'deleted');
+    // }
+
+    public function deleteuser($id){
+        $user= User::find($id);
+        $user->delete();
+        return response()->json(['satatus' => 'User deleted successfully']);
+    }
 }
