@@ -2,55 +2,49 @@
 @section('scripts')
 <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 <script>
-     $(document).ready(function(){
+    $(document).ready(function(){
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
 
-
         $('.deletebtn').click(function(e){
-        e.preventDefault();
-        var delete_id = $(this).closest("tr").find('.delete_val_id').val();
+            e.preventDefault();
+            var delete_id = $(this).closest("tr").find('.delete_val_id').val();
+            // console.log('Delete button clicked'); // Add this line
 
 
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            })
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this imaginary file!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    var data = {
+                        "_token": $('input[name=_token]').val(),
+                        "id": delete_id,
+                    };
 
-
-            .then((willDelete) => {
-            if (willDelete) {
-
-            var data = {
-                "_token":$('input[name=_token]').val(),
-                "id":delete_id
-            };
-
-            $ajax({
-                type: "DELETE",
-                url: '/admin/user-delete/'+delete_id,
-                data: data,
-                success:function(response){
-                swal(response.status , {
-                    icon: "success",
-                })
-                .then((result)=>{
-                    location.reload();
-                });
+                    $.ajax({
+                        type: "DELETE",
+                        url: '/admin/delete-user/'+ delete_id,
+                        data: data,
+                        success:function(response){
+                            swal(response.status , {
+                                icon: "success",
+                            }).then((result) => {
+                                location.reload();
+                            });
+                        }
+                    });
                 }
-            });
-        }
             });
         });
     });
-
-</script>
+    </script>
 @endsection
 
 <div class="col-lg-12 grid-margin stretch-card">
@@ -114,7 +108,6 @@
                    <div class="inline-flex">
 
                     <a href="{{ route('edit-user', $user->id) }}" class=" btn btn-sm btn-info " style="margin-right: 10px;">Edit</a>
-
 
                     <button type="submit" class="btn btn-sm btn-danger deletebtn">Delete</button>
                     {{-- <form method="POST" action="{{ route('delete-user', $user->id) }}">

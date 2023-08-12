@@ -22,4 +22,15 @@
 <script src="{{'/admin/assets/js/dashboard.js'}}"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    @if (session('status'))
+    swal(
+        {
+            title: "{{session('status')}}",
+            icon: "{{session('statuscode')}}",
+            button:"OK"
+        }
+    );
+    @endif
+</script>
 
