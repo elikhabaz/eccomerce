@@ -15,7 +15,9 @@ Route::get('create-category', [CategoryController::class , 'createcategory'])->n
 Route::post('store-category', [CategoryController::class , 'storecategory'])->name('store-category');
 Route::get('edit-category/{id}', [CategoryController::class , 'editcategory'])->name('edit-category');
 Route::put('update-category/{id}', [CategoryController::class , 'updatecategory'])->name('update-category');
-Route::delete('delete-category/{id}', [CategoryController::class , 'distroy'])->name('delete-category');
+// Route::delete('delete-category/{id}', [CategoryController::class , 'distroy'])->name('delete-category');
+Route::delete('delete-category/{id}', [CategoryController::class , 'deletecategory'])->name('delete-category'); ///ajaxdeleteCategory
+
 
 //user management
 Route::get('all-users' , [UserController::class , 'allusers'])->name('all-users');
@@ -24,7 +26,7 @@ Route::post('store-user', [UserController::class , 'storeuser'])->name('store-us
 Route::get('edit-user/{id}', [UserController::class , 'edituser'])->name('edit-user');
 Route::put('update-use/{id}', [UserController::class , 'updateuser'])->name('update-user');
 // Route::delete('delete-user/{id}', [UserController::class , 'distroy'])->name('delete-user');
-Route::delete('delete-user/{id}', [UserController::class , 'deleteuser'])->name('delete-user');
+Route::delete('delete-user/{id}', [UserController::class , 'deleteuser'])->name('delete-user');//ajaxdeleteUser
 
 
 

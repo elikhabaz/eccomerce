@@ -40,12 +40,18 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->update();
         return redirect('all-categorise')->with('upd' , 'UPdate');
-
     }
 
-    public function distroy($id){
-        $category = Category::findOrFail($id);
+    // public function distroy($id){
+    //     $category = Category::findOrFail($id);
+    //     $category->delete();
+    //     return redirect()->route('all-categories')->with('del' , 'deleted');
+    // }
+
+
+    public function deletecategory($id){
+        $category= Category::find($id);
         $category->delete();
-        return redirect()->route('all-categories')->with('del' , 'deleted');
+        return response()->json(['status' => 'category deleted successfully']);
     }
 }
